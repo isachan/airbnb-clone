@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import { Inter, Nunito } from 'next/font/google';
 import NavBar from './components/navbar/NavBar'; // Add this line
 import './globals.css';
+import { ClientOnly } from './components/ClientOnly';
+import RegisterModal from './components/modals/RegisterModal';
 
 export const metadata: Metadata = {
   title: 'Airbnb Clone',
@@ -20,7 +22,10 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={font.className}>
-        <NavBar />
+        <ClientOnly>
+          <RegisterModal />
+          <NavBar />
+        </ClientOnly>
         {children}
       </body>
     </html>
